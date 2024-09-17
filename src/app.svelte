@@ -4,9 +4,9 @@
   import Counter from './lib/Counter.svelte'
   import { onMount } from 'svelte';
   import { Router, link } from 'svelte-spa-router';
-  import Home from './pages/Home.svelte';
-  import About from './pages/About.svelte';
-  import Contact from './pages/Contact.svelte';
+  import Home from './pages/home.svelte';
+  import About from './pages/about.svelte';
+  import Contact from './pages/contact.svelte';
 
   let loading = true;
 
