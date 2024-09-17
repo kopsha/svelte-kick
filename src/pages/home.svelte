@@ -1,3 +1,8 @@
+<script>
+  import svelteLogo from '/src/assets/svelte.svg'
+  import viteLogo from '/vite.svg'
+  import Counter from '/src/lib/Counter.svelte'
+</script>
 <main>
   <div>
     <a href="https://vitejs.dev" target="_blank" rel="noreferrer">

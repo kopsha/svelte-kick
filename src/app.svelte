@@ -1,9 +1,8 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
   import { onMount } from 'svelte';
-  import { Router, link } from 'svelte-spa-router';
+  import { link } from 'svelte-spa-router';
+  import Router from 'svelte-spa-router';
+  import {wrap} from 'svelte-spa-router/wrap' // TODO: later aligator
   import Home from './pages/home.svelte';
   import About from './pages/about.svelte';
   import Contact from './pages/contact.svelte';
@@ -23,6 +22,7 @@
   };
 </script>
 
+<body>
 {#if loading}
   <div class="loader">Loading...</div>
 {:else}
@@ -33,7 +33,7 @@
   </nav>
   <Router {routes} />
 {/if}
-
+</body>
 
 <style>
   .loader {
