@@ -1,5 +1,5 @@
 <script>
-  // About page script (if needed)
+    // About page script (if needed)
 </script>
 
 <h1>About Page</h1>
