@@ -1,7 +1,8 @@
 
-# Svelte Progress Bar Loader Application
+# Svelte Application Kickstarter
 
 A clean Svelte application kickstarter that includes:
+
 
 ## Features
 
@@ -9,17 +10,21 @@ A clean Svelte application kickstarter that includes:
 - **Client-Side Routing**: Navigate between Home, About, and Contact pages without reloading the page.
 - **Responsive Design**: Simple and clean UI that works across different screen sizes.
 
+
 ## Getting Started
 
-If you're looking for a dockerized version of it, open an issue.
+If you're looking for a dockerized version of it open an issue.
+
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v12 or newer)
+- [Node.js](https://nodejs.org/) (v18 or newer)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Vite](https://vitejs.dev/)
+- [Svelte](https://svelte.dev/docs/introduction#start-a-new-project)
 
 
 ## License
 
-This project is licensed under the [BSD2 license](./LICENSE).
+This project is licensed under the [BSD license](./LICENSE).
 
