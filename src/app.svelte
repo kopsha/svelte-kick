@@ -8,11 +8,25 @@
     import Contact from "./pages/contact.svelte";
 
     let loading = true;
+    let progress = 0;
 
     onMount(() => {
+        const loadingDuration = 987;
+        const intervalDuration = 144;
+
+        const increment = (intervalDuration / loadingDuration) * 100;
+
+        const interval = setInterval(() => {
+            progress += increment;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+            }
+        }, intervalDuration);
+
         setTimeout(() => {
             loading = false;
-        }, 1000);
+        }, loadingDuration);
     });
 
     const routes = {
@@ -23,7 +37,11 @@
 </script>
 
 {#if loading}
-    <div class="loader">Loading...</div>
+    <div class="progress-container">
+        <div class="progress-bar" style="width: {progress}%;">
+            {Math.floor(progress)}%
+        </div>
+    </div>
 {:else}
     <nav>
         <a href="/" use:link>Home</a>
@@ -36,10 +54,25 @@
 {/if}
 
 <style>
-    .loader {
-        font-size: 2em;
+    .progress-container {
+        width: 61.8%;
+        height: 34px;
+        background-color: #e0e0e0;
+        margin: 21% auto;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background-color: #0366d6;
         text-align: center;
-        margin-top: 20%;
+        vertical-align: middle;
+        line-height: 34px;
+        font-size: 8pt;
+        color: white;
+        transition: width 0.144s ease;
     }
     nav {
         display: flex;
