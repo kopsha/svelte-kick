@@ -2,46 +2,57 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import { onMount } from 'svelte';
+  import { Router, link } from 'svelte-spa-router';
+  import Home from './pages/Home.svelte';
+  import About from './pages/About.svelte';
+  import Contact from './pages/Contact.svelte';
+
+  let loading = true;
+
+  onMount(() => {
+    setTimeout(() => {
+      loading = false;
+    }, 2000); // Loader will show for 2 seconds
+  });
+
+  const routes = {
+    '/': Home,
+    '/about': About,
+    '/contact': Contact
+  };
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+{#if loading}
+  <div class="loader">Loading...</div>
+{:else}
+  <nav>
+    <a href="/" use:link>Home</a>
+    <a href="/about" use:link>About</a>
+    <a href="/contact" use:link>Contact</a>
+  </nav>
+  <Router {routes} />
+{/if}
 
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  .loader {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20%;
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+  nav {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f0f0f0;
   }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
+  nav a {
+    text-decoration: none;
+    color: #0366d6;
   }
-  .read-the-docs {
-    color: #888;
+  nav a:hover {
+    text-decoration: underline;
   }
 </style>
+
