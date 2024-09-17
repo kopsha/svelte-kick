@@ -12,7 +12,7 @@
 
     onMount(() => {
         const loadingDuration = 987;
-        const intervalDuration = 144;
+        const intervalDuration = 89;
 
         const increment = (intervalDuration / loadingDuration) * 100;
 
@@ -37,11 +37,9 @@
 </script>
 
 {#if loading}
-    <div class="progress-container">
-        <div class="progress-bar" style="width: {progress}%;">
-            {Math.floor(progress)}%
-        </div>
-    </div>
+    <nav>
+        <progress value={Math.trunc(progress)} max="100" />
+    </nav>
 {:else}
     <nav>
         <a href="/" use:link>Home</a>
@@ -54,31 +52,12 @@
 {/if}
 
 <style>
-    .progress-container {
-        width: 61.8%;
-        height: 34px;
-        background-color: #e0e0e0;
-        margin: 21% auto;
-        border-radius: 5px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .progress-bar {
-        height: 100%;
-        background-color: #0366d6;
-        text-align: center;
-        vertical-align: middle;
-        line-height: 34px;
-        font-size: 8pt;
-        color: white;
-        transition: width 0.144s ease;
-    }
     nav {
         display: flex;
         gap: 1rem;
         padding: 1rem;
         background-color: #f0f0f0;
+        height: 1.618em;
     }
     nav a {
         text-decoration: none;
@@ -87,6 +66,33 @@
     nav a:hover {
         text-decoration: underline;
     }
+    progress {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 89%;
+        background-color: #f0f0f0;
+        border: none;
+    }
+
+    progress::-webkit-progress-bar {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        border: none;
+    }
+
+    progress::-webkit-progress-value {
+        background-color: cornflowerblue;
+        transition: width 0.081s ease-in-out;
+        border-radius: 5px;
+    }
+
+    progress::-moz-progress-bar {
+        background-color: cornflowerblue;
+        transition: all 0.081s ease;
+        border-radius: 5px;
+    }
+
     main {
         padding: 8px;
         margin: 0 144px;
