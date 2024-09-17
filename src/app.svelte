@@ -12,7 +12,7 @@
     onMount(() => {
         setTimeout(() => {
             loading = false;
-        }, 2000); // Loader will show for 2 seconds
+        }, 1000);
     });
 
     const routes = {
@@ -22,18 +22,18 @@
     };
 </script>
 
-<main>
-    {#if loading}
-        <div class="loader">Loading...</div>
-    {:else}
-        <nav>
-            <a href="/" use:link>Home</a>
-            <a href="/about" use:link>About</a>
-            <a href="/contact" use:link>Contact</a>
-        </nav>
+{#if loading}
+    <div class="loader">Loading...</div>
+{:else}
+    <nav>
+        <a href="/" use:link>Home</a>
+        <a href="/contact" use:link>Contact</a>
+        <a href="/about" use:link>About</a>
+    </nav>
+    <main>
         <Router routes={routes} />
-    {/if}
-</main>
+    </main>
+{/if}
 
 <style>
     .loader {
@@ -53,5 +53,10 @@
     }
     nav a:hover {
         text-decoration: underline;
+    }
+    main {
+        padding: 8px;
+        margin: 0 144px;
+        /* border: solid 1px red; */
     }
 </style>
