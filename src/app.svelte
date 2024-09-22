@@ -36,20 +36,18 @@
     };
 </script>
 
-{#if loading}
-    <nav>
+<nav>
+    <a href="/" use:link>Home</a>
+    <a href="/contact" use:link>Contact</a>
+    <a href="/about" use:link>About</a>
+</nav>
+<main>
+    {#if loading}
         <progress value={Math.trunc(progress)} max="100" />
-    </nav>
-{:else}
-    <nav>
-        <a href="/" use:link>Home</a>
-        <a href="/contact" use:link>Contact</a>
-        <a href="/about" use:link>About</a>
-    </nav>
-    <main>
+    {:else}
         <Router routes={routes} />
-    </main>
-{/if}
+    {/if}
+</main>
 
 <style>
     nav {
@@ -70,7 +68,7 @@
         -webkit-appearance: none;
         appearance: none;
         width: 100%;
-        height: 89%;
+        height: 13px;
         background-color: #f0f0f0;
         border: none;
     }
